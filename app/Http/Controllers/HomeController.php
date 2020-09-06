@@ -20,11 +20,11 @@ class HomeController extends Controller
     }
     public function index()
     {
-        $lat = 23.7500756;//Auth::user()->info->lat;
-        $lon = 90.382269;// Auth::user()->info->lng;
-        $distance = 50;
-        //6371
-        //111.045
+        $lat = Auth::user()->info->lat;
+        $lon = Auth::user()->info->lng;
+        $distance = 5;
+        //6371 ..23.7500756;//
+        //111.045 ../90.382269;//
         $sqlDistance = DB::raw("6371 * acos(cos(radians(" . $lat . "))
         * cos(radians(user_infos.lat))
         * cos(radians(user_infos.lng) - radians(" . $lon . "))
