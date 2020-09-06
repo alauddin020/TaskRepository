@@ -22,3 +22,4 @@ Route::get('profile','HomeController@profile')->name('profile');
 Route::post('profile','HomeController@photo');
 Route::get('like','UserController@listLikedUsers')->name('like');
 Route::post('like','UserController@store');
+Route::put('like','UserController@dislike');

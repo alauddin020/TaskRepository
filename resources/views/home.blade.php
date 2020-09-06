@@ -35,7 +35,7 @@
                                         <td>{{round($user->distance,2)}} KM</td>
                                         <td>
                                             <a href="javascript:void(0)" onclick="like('{{$user->user_id}}')"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>  {{--({{$user->user->likedUsers->count()}})--}}
-                                            <a href="javascript:void(0)"><i class="fa fa-thumbs-o-down ml-2" aria-hidden="true"></i></a>
+                                            <a href="javascript:void(0)" onclick="dislike('{{$user->user_id}}')"><i class="fa fa-thumbs-o-down ml-2" aria-hidden="true"></i></a>
                                         </td>
                                     </tr>
                                 @empty
@@ -63,6 +63,19 @@
                     }
                     else{
                         console.log(data)
+                    }
+                }
+            })
+        }
+        dislike=(otherId)=>{
+            $.ajax({
+                url: '{{route('like')}}',
+                type: 'PUT',
+                data:{dislikedUser:otherId,_token:'{{csrf_token()}}'},
+                success: function (data) {
+                    if (data.success)
+                    {
+                        alert(data.success);
                     }
                 }
             })

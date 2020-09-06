@@ -21,7 +21,29 @@
             </div>
             <div class="col-md-8">
                 <div class="card">
-                    {{$user}}
+                    <div class="card-header">
+                        <strong>Other User Liked You</strong>
+                    </div>
+                    @if (count($user->like))
+                        <div class="card-body">
+                            <table class="table table-striped table-inverse">
+                                <thead class="thead-inverse">
+                                <tr>
+                                    <th>SL</th>
+                                    <th>Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($user->like as $key=>$user)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{$user->name}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

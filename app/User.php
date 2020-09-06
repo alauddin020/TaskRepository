@@ -52,4 +52,10 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'user_likes', 'user_id', 'liked_user_id')
             ->where('is_mutual',1);
     }
+
+    public function like()
+    {
+        return $this->belongsToMany('App\User', 'user_likes', 'liked_user_id','user_id')
+            ->where('is_mutual',1);
+    }
 }

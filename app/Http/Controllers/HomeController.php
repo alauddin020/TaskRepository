@@ -48,7 +48,7 @@ class HomeController extends Controller
 
     public function profile()
     {
-        $user = User::with('info')->findOrFail(Auth::id());
+        $user = User::with('info','like')->findOrFail(Auth::id());
         return view('profile',compact('user'));
     }
 
